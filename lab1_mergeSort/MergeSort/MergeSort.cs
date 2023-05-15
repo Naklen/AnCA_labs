@@ -1,4 +1,4 @@
-﻿namespace aca_lab1_merge_sort;
+﻿namespace MergeSortNS;
 
 public class MergeSort
 {
@@ -11,7 +11,7 @@ public class MergeSort
         var size = 1;
         while (size < source.Length)
         {
-            for ( var i = 0; i < source.Length; i += 2 * size ) 
+            for (var i = 0; i < source.Length; i += 2 * size)
                 Merge(currentSrc, i, currentSrc, i + size, currentTarget, i, size);
 
             tmp = currentSrc;
@@ -23,7 +23,8 @@ public class MergeSort
         return currentSrc;
     }
 
-    static void Merge<T>(
+    //Merges two sorted arrays into one sorted array
+    public static void Merge<T>(
         T[] firstArray, int firstStart,
         T[] secondArray, int secondStart,
         T[] target, int targetStart,
@@ -46,7 +47,7 @@ public class MergeSort
 
         for (var i = targetStart; i < targetStart + iterationCount; i++)
         {
-            if (index1 < firstEnd && (index2 >= secondEnd || firstArray[index1].CompareTo(secondArray[index2]) < 0))
+            if (index1 < firstEnd && (index2 >= secondEnd || firstArray[index1].CompareTo(secondArray[index2]) <= 0))
             {
                 target[i] = firstArray[index1];
                 index1++;
